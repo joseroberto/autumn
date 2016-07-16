@@ -1,0 +1,4 @@
+# Passos para instalação
+
+pip install --editable .
+

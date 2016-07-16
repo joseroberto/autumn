@@ -1,4 +1,11 @@
-drop table if exists entries;
+drop table if exists roteiro_manobra;
+drop table if exists equipamento;
+drop table if exists unidade;
+drop table if exists roteiro_manobra_item;
+drop table if exists roteiro_comando;
+drop table if exists usuario;
+drop table if exists execucao;
+drop table if exists execucao_item;
 
 PRAGMA foreign_keys = ON;
 
@@ -60,5 +67,4 @@ create table execucao_item(
   hora_execucao text not null,
   foreign key (id_execucao) references execucao(id)
 )
-
 
