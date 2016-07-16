@@ -61,10 +61,13 @@ def close_db(error):
         g.sqlite_db.close()
 
 @app.route('/')
-def show_entries():
+def lista_roteiros():
     #db = get_db()
     #cur = db.execute('select title, text from entries order by id desc')
     #entries = cur.fetchall()
     #return render_template('show_entries.html', entries=entries)
-    return render_template('teste.html')
+    return render_template('index.html')
 
+@app.route('/item')
+def detalha_roteiro():
+    return render_template('item.html')

@@ -2,3 +2,9 @@
 
 pip install --editable .
 
+export FLASK_APP=app.autman
+
+flask initdb
+
+    
+
