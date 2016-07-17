@@ -67,7 +67,7 @@
     <div class="item">
       <!-- Table -->
       <div class="table-responsive">
-        <table id="tbl" class="table">
+        <table id="tbl1" class="table">
           <thead>
             <!-- Table head -->
             <tr>
@@ -99,7 +99,7 @@
 				<hr />
 				<br />
         <!-- /Table -->
-        <table class="table">
+        <table id="tbl2" class="table">
           <thead>
             <!-- Table head -->
             <tr>
@@ -113,15 +113,13 @@
           <tbody>
             {% for item in normalizacoes %}
             <tr>
-              <td>2.{{loop.index}}<input type="hidden" name="id" value="" id="id" value="{{ item.id }}"></td>
+              <td>2.{{loop.index}}</td>
               <td>{{ item.unidade }}</td>
               <td>{{ item.descricao }}</td>
-              <td> : </td>
+              <td><span class="hora"> : </span></</td>
               <!-- Action -->
               <td>
-                <div class="option-group field">
-                  <a id="btn-{{ item.id }}" class="btn btn-sm btn-green"><i class="fa fa-square-o" aria-hidden="true"></i> Executa</i></a>
-                </div>
+                  <a class="btn btn-sm btn-green" item-id="{{ item.id }}"><span><i class="fa fa-square-o" aria-hidden="true"></i> Executa</span></a>
               </td>
             </tr>
             {% else %}

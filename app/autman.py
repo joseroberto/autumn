@@ -13,6 +13,7 @@ from sqlite3 import dbapi2 as sqlite3
 from flask import Flask, request, session, g, jsonify, redirect, url_for, abort, \
      render_template, flash
 from time import gmtime, strftime
+import paramiko
 
 # create our little application :)
 app = Flask(__name__)
@@ -90,12 +91,21 @@ def detalha_roteiro(roteiro_id):
 
 @app.route('/execute')
 def executa_roteiro():
-    print request.args.get('id', 0, type=int)
+    id = request.args.get('id', 0, type=int)
     tempo = gmtime()
     hora = strftime("%H:%M", tempo)
 
-    return jsonify(hora=hora)
+    comandos = query_db('select c.codigo as equipamento, c.tipo as tipo, a.comando as comando, d.codigo as unidade from roteiro_comando a inner join roteiro_manobra_item b on b.id=a.id_roteiro_manobra_item inner join equipamento c on c.id=a.id_equipamento inner join unidade d on d.id=b.id_unidade  where id_roteiro_manobra_item=?',[id])
 
-@app.route('/teste')
-def executa_teste():
-    return render_template('teste.html')
+    if comandos:
+        ssh = paramiko.SSHClient()
+        ssh.load_system_host_keys()
+        ssh.connect(app.config['IP_SAGE'], username=app.config['USER_SAGE'], password=app.config['PASS_SAGE'])
+
+        for item_comando in comandos:
+            ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command("sage_ctrl %s:%s:%d %d" % (item_comando['unidade'], item_comando['equipamento'],item_comando['tipo'], item_comando['comando']))            
+            print "sage_ctrl %s:%s:%d %d" % (item_comando['unidade'], item_comando['equipamento'],item_comando['tipo'], item_comando['comando'])
+        
+        ssh.close()
+
+    return jsonify(hora=hora)
