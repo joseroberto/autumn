@@ -8,6 +8,7 @@
     :license: BSD, see LICENSE for more details.
 """
 import os
+import sys
 from sqlite3 import dbapi2 as sqlite3
 from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash
@@ -36,7 +37,11 @@ def init_db():
     """Initializes the database."""
     db = get_db()
     with app.open_resource('schema.sql', mode='r') as f:
-        db.cursor().executescript(f.read())
+        linha = f.read()
+        try:
+            db.cursor().executescript(linha)
+        except:
+            print ('Erro:', linha) 
     db.commit()
 
 def query_db(query, args=(), one=False):
@@ -73,6 +78,8 @@ def lista_roteiros():
 
 @app.route('/roteiro/<int:roteiro_id>')
 def detalha_roteiro(roteiro_id):
-    roteiro = query_db('select a.id as id, b.codigo as origem, c.codigo as equipamento, configuracao from roteiro_manobra a inner join unidade b on a.id_origem=b.id inner join equipamento c on c.id=a.id_equipamento where a.id=? order by 2,3 desc',[roteiro_id], one=True)
-
-    return render_template('item.html', roteiro = roteiro)
+    return render_template('item.html', 
+        roteiro = query_db('select a.id as id, b.codigo as origem, c.codigo as equipamento, configuracao from roteiro_manobra a inner join unidade b on a.id_origem=b.id inner join equipamento c on c.id=a.id_equipamento where a.id=? order by 2,3 desc',[roteiro_id], one=True),
+        liberacoes = query_db('select a.id as id, b.codigo as unidade, descricao from roteiro_manobra_item a inner join unidade b on b.id=a.id_unidade where id_roteiro_manobra=? and procedimento=1 order by 1', [roteiro_id]),
+        normalizacoes = query_db('select a.id as id, b.codigo as unidade, descricao from roteiro_manobra_item a inner join unidade b on b.id=a.id_unidade where id_roteiro_manobra=? and procedimento=2 order by 1', [roteiro_id])
+        )

@@ -19,9 +19,31 @@
 				</label>
 			</div>
 			<div class="col-md-6">
-				<label for="origem" class="field-label">Origem </label>
-				<label for="origem" class="field">
-					<input type="text" name="origem" id="origem" class="gui-input" placeholder="Origem" value="{{ roteiro.equipamento }}">
+				<label for="equipamento" class="field-label">Equipamento </label>
+				<label for="equipamento" class="field">
+					<input type="text" name="equipamento" id="equipamento" class="gui-input" placeholder="Equipamento" value="{{ roteiro.equipamento }}">
+				</label>
+			</div>
+		</div>
+    <div class="row">
+			<div class="col-md-6">
+				<label for="periodo" class="field-label">Periodo </label>
+				<label for="periodo" class="field">
+					<input type="text" name="origem" id="periodo" class="gui-input" placeholder="Periodo"">
+				</label>
+			</div>
+			<div class="col-md-6">
+				<label for="referencia" class="field-label">Referência </label>
+				<label for="referencia" class="field">
+					<input type="text" name="origem" id="referencia" class="gui-input" placeholder="Referência">
+				</label>
+			</div>
+		</div>
+    <div class="row">
+			<div class="col-md-12">
+				<label for="responsaveis" class="field-label">Responsáveis</label>
+				<label for="responsaveis" class="field">
+					<input type="text" name="origem" id="responsaveis" class="gui-input" placeholder="Responsáveis"">
 				</label>
 			</div>
 		</div>
@@ -41,32 +63,73 @@
 		</div>
 	</form>
 
-  <div class="blog-two-item">
-    <div class="ui-42">
+  <div class="col-md-12">
+    <div class="item">
       <!-- Table -->
       <div class="table-responsive">
         <table class="table">
           <thead>
             <!-- Table head -->
             <tr>
-              <th><h5>ORIGEM</h5></th>
-              <th><h5>EQUIPAMENTO</h5></th>
+              <th><h5>1</h5></th>
+              <th>&nbsp;</th>
+              <th><h5>LIBERAÇÃO</h5></th>
+              <th><h5>HORA</h5></th>
               <th><h5>AÇÃO</h5></th>
             </tr>
           </thead>
           <tbody>
-            {% for entry in entries %}
+            {% for item in liberacoes %}
             <tr>
-              <td>{{ entry.origem }}</td>
-              <td>{{ entry.equipamento }}</td>
+              <td>1.{{loop.index}}</td>
+              <td>{{ item.unidade }}</td>
+              <td>{{ item.descricao }}</td>
+              <td> : </td>
               <!-- Action -->
-              <td><a href="#" class="button bg-green">Seleciona</a></td>
+              <td>
+                <button class="btn btn-sm btn-grey"><span><i class="fa fa-heart"></i> Executado</span></button>
+              </td>
             </tr>
             {% else %}
-              <tr><td colspan="3">Não há dados</td></tr>
+              <tr><td colspan="5">Não há dados</td></tr>
             {% endfor %}
           </tbody>
-        </table><!-- /Table -->
+        </table>
+				<br />
+				<hr />
+				<br />
+        <!-- /Table -->
+        <table class="table">
+          <thead>
+            <!-- Table head -->
+            <tr>
+              <th><h5>2</h5></th>
+              <th>&nbsp;</th>
+              <th><h5>NORMALIZAÇÃO</h5></th>
+              <th><h5>HORA</h5></th>
+              <th><h5>AÇÃO</h5></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in normalizacoes %}
+            <tr>
+              <td>2.{{loop.index}}</td>
+              <td>{{ item.unidade }}</td>
+              <td>{{ item.descricao }}</td>
+              <td> : </td>
+              <!-- Action -->
+              <td>
+                <div class="option-group field">										 
+                  <button class="btn btn-sm btn-green"><i class="fa fa-heart"></i> Executa</i></button>
+                </div>
+              </td>
+            </tr>
+            {% else %}
+              <tr><td colspan="5">Não há dados</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <!-- /Table -->
       </div>
     </div>
   </div>

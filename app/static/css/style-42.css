@@ -557,3 +557,51 @@ hr {
 	display:inline-block;
 	margin-top:4px;
 }
+
+.item{
+	max-width:800px;
+	margin:50px auto;
+	border-bottom:1px solid #ddd;
+}
+/* Transition */
+.item .table tr{
+	-webkit-transition:all 1s;
+	-moz-transition:all 1s;
+	-o-transition:all 1s;
+	transition:all 1s;
+	background:#fff;
+}
+.item .table tr:hover{
+	-webkit-transition:all 1s;
+	-moz-transition:all 1s;
+	-o-transition:all 1s;
+	transition:all 1s;
+	background:#f9f9f9;
+}
+/* table */
+.item .table{
+	margin-bottom:0px;
+	border:1px solid #ddd;
+	text-align:center;
+}
+.item .table th {
+	text-align:center;
+}
+.item .table h4{
+	color:#999;
+	font-size:13px;
+}
+.item .table h5{
+	font-size:12px;
+	color:#888;
+}
+/* Button */
+.item .table .button{
+	width:100px;
+	padding:6px 10px;
+	border:0px;
+	border-radius:3px;
+	color:#fff;
+	display:inline-block;
+	margin-top:4px;
+}

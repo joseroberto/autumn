@@ -118,7 +118,7 @@ insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade,
 insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (3, 5, 'Solicitar COSR-NE autorização liberação 14F8/CTM.',3 ,1);
 insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (4, 5, 'Autorizar CROL liberação 14F8/CTM.',3, 1);
 insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (5, 5, 'Autorizar CTM liberação 14F8.',3, 1);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (6, 5, 'Colocar operação da SE no nível 2.',3, 1)
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (6, 5, 'Colocar operação da SE no nível 2.',3, 1);
 insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (7, 5, 'Colocar proteção 14F8 na posição EM TRANSFERÊNCIA',3, 1);
 insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (8, 5, 'Confirmar 14D1 fechado',3, 1);
 insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (9, 5, 'Fechar 34F8-6',3, 1);
@@ -135,7 +135,7 @@ insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade,
 insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (19, 5, 'Solicitar CROL normalização 14F8.',3 ,2);
 insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (20, 5, 'Solicitar COSR-NE autorização normalização 14F8/CTM',3, 2);
 insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (21, 5, 'Autorizar CROL normalização 14F8/CTM',3, 2);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (22, 5, 'Autorizar CTM normalização 14F8',3, 2)
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (22, 5, 'Autorizar CTM normalização 14F8',3, 2);
 insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (23, 5, 'Colocar operação da SE no nível 2.',3, 2);
 insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (24, 5, 'Desbloquear comando elétrico 34F8-1, 34F8-2 e 34F8-5.',3, 2);
 insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (25, 5, 'Colocar proteção 14F8 na posição EM TRANSFERÊNCIA',3, 2);
@@ -149,4 +149,4 @@ insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade,
 insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (9, 9, 1);
 insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (10, 5, 0);
 insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (11, 7, 0);
-insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (11, 8, 0)
+insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (11, 8, 0);
