@@ -146,7 +146,7 @@ insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade,
 insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (30, 5, 'Retornar operação da SE para o nível 3',3, 2);
 insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (31, 5, 'Informar CROL conclusão normalização 14F8',3, 2);
 
-insert into roteiro_comando (id, id_roteiro_manobra_item, id_equipamento, comando) values (1, 9, 9, 1);
-insert into roteiro_comando (id, id_roteiro_manobra_item, id_equipamento, comando) values (1, 10, 5, 0);
-insert into roteiro_comando (id, id_roteiro_manobra_item, id_equipamento, comando) values (1, 11, 7, 0);
-insert into roteiro_comando (id, id_roteiro_manobra_item, id_equipamento, comando) values (1, 11, 8, 0);
+insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (9, 9, 1);
+insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (10, 5, 0);
+insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (11, 7, 0);
+insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (11, 8, 0)
