@@ -30,14 +30,11 @@ create table roteiro_manobra (
 );
 
 
-
 create table roteiro_manobra_item(
-  id integer primary key autoincrement,
+  id integer primary key,
   id_roteiro_manobra integer not null,
-  id_comando integer null,
   descricao text not null,
   id_unidade integer not null,
-  foreign key (id_comando) references comando(id),
   foreign key (id_roteiro_manobra) references roteiro_manobra(id),
   foreign key (id_unidade) references unidade(id)
 );
@@ -106,23 +103,25 @@ insert into roteiro_manobra (id, id_origem, id_equipamento, configuracao) values
 insert into roteiro_manobra (id, id_origem, id_equipamento, configuracao) values (3, 2, 3,'Disjuntor e chaves de T5 associadas fechadas');
 insert into roteiro_manobra (id, id_origem, id_equipamento, configuracao) values (4, 2, 4,'Disjuntor e chaves do L1 associadas fechadas');
 insert into roteiro_manobra (id, id_origem, id_equipamento, configuracao) values (5, 3, 5,'Disjuntor e chaves DO F8 associadas fechadas');
-insert into roteiro_manobra (id, id_origem, id_equipamento, configuracao) values (6, 3, 10,'Disjuntor e chaves do C3 associadas fechadas');
-insert into roteiro_manobra (id, id_origem, id_equipamento, configuracao) values (7, 3, 15,'Disjuntor e chaves associadas DO W1 fechadas');
-insert into roteiro_manobra (id, id_origem, id_equipamento, configuracao) values (8, 3, 20,'Disjuntor e chaves associadas do D1 fechadas');
-insert into roteiro_manobra (id, id_origem, id_equipamento, configuracao) values (9, 3, 23,'Eventos terminados em impares do B1 conectadas');
-insert into roteiro_manobra (id, id_origem, id_equipamento, configuracao) values (10, 3, 6,'chave');
-insert into roteiro_manobra (id, id_origem, id_equipamento, configuracao) values (11, 3, 7,'chave');
-insert into roteiro_manobra (id, id_origem, id_equipamento, configuracao) values (12, 3, 8,'chave');
-insert into roteiro_manobra (id, id_origem, id_equipamento, configuracao) values (13, 3, 9,'chave');
-insert into roteiro_manobra (id, id_origem, id_equipamento, configuracao) values (14, 3, 11,'chave');
-insert into roteiro_manobra (id, id_origem, id_equipamento, configuracao) values (15, 3, 12,'chave');
-insert into roteiro_manobra (id, id_origem, id_equipamento, configuracao) values (16, 3, 13,'chave');
-insert into roteiro_manobra (id, id_origem, id_equipamento, configuracao) values (17, 3, 14,'chave');
-insert into roteiro_manobra (id, id_origem, id_equipamento, configuracao) values (18, 3, 16,'chave');
-insert into roteiro_manobra (id, id_origem, id_equipamento, configuracao) values (19, 3, 17,'chave');
-insert into roteiro_manobra (id, id_origem, id_equipamento, configuracao) values (20, 3, 18,'chave');
-insert into roteiro_manobra (id, id_origem, id_equipamento, configuracao) values (21, 3, 19,'chave');
-insert into roteiro_manobra (id, id_origem, id_equipamento, configuracao) values (22, 3, 21,'chave');
-insert into roteiro_manobra (id, id_origem, id_equipamento, configuracao) values (23, 3, 22,'chave');
+insert into roteiro_manobra (id, id_origem, id_equipamento, configuracao) values (10, 3, 6,'Disjuntor e chaves DO C3 associadas fechadas');
+insert into roteiro_manobra (id, id_origem, id_equipamento, configuracao) values (15, 3, 12,'Disjuntor e chaves DO W1 associadas fechadas');
+insert into roteiro_manobra (id, id_origem, id_equipamento, configuracao) values (20, 3, 18,'Disjuntor e chaves DO D1 associadas fechadas');
+insert into roteiro_manobra (id, id_origem, id_equipamento, configuracao) values (23, 3, 22,'Eventos terminados em impares do B1 conectadas');
 
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade) values (1, 5, 'Receber do responsável solicitação liberação 14F8',3);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade) values (2, 5, 'Solicitar CROL liberação 14F8.',3);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade) values (3, 5, 'Solicitar COSR-NE autorização liberação 14F8/CTM.',3);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade) values (4, 5, 'Autorizar CROL liberação 14F8/CTM.',3);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade) values (5, 5, 'Autorizar CTM liberação 14F8.',3);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade) values (6, 5, 'Colocar operação da SE no nível 2.',3)
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade) values (7, 5, 'Colocar proteção 14F8 na posição EM TRANSFERÊNCIA',3);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade) values (8, 5, 'Confirmar 14D1 fechado',3);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade) values (9, 5, 'Fechar 34F8-6',3);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade) values (10, 5, 'Abrir 14F8',3);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade) values (11, 5, 'Abrir 34F8-2 e 34F8-5',3);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade) values (12, 5, 'Colocar proteção 14F8 na posição TRANSFERIDO',3);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade) values (13, 5, 'Bloquear comando elétrico 34F8-1, 34F8-2 e 34F8-5',3);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade) values (14, 5, 'Entregar 14F8 isolado ao responsável.',3);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade) values (15, 5, 'Retornar operação da SE para o nível 3',3);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade) values (16, 5, 'Informar CROL conclusão liberação 14F8',3);
 
