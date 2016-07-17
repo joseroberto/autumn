@@ -1,5 +1,13 @@
 {% extends "layout.html" %}
 {% block title %}
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        alert('Ok');
+    });
+});
+</script>
+
 <div class="container">
   <h2>Roteiros de Manobras <span>Item</span></h2>
   <div class="breads">
@@ -67,7 +75,7 @@
     <div class="item">
       <!-- Table -->
       <div class="table-responsive">
-        <table class="table">
+        <table id="tbl" class="table">
           <thead>
             <!-- Table head -->
             <tr>
@@ -87,7 +95,7 @@
               <td> : </td>
               <!-- Action -->
               <td>
-                <button class="btn btn-sm btn-grey"><span><i class="fa fa-heart"></i> Executado</span></button>
+                <button id="btn" class="btn btn-sm btn-grey"><span><i class="fa fa-heart"></i> Executado</span></button>
               </td>
             </tr>
             {% else %}
@@ -120,7 +128,7 @@
               <!-- Action -->
               <td>
                 <div class="option-group field">										 
-                  <button class="btn btn-sm btn-green"><i class="fa fa-heart"></i> Executa</i></button>
+                  <button class="btn btn-sm btn-green"><i class="fa fa-globe"></i> Executa</i></button>
                 </div>
               </td>
             </tr>

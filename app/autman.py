@@ -10,7 +10,7 @@
 import os
 import sys
 from sqlite3 import dbapi2 as sqlite3
-from flask import Flask, request, session, g, redirect, url_for, abort, \
+from flask import Flask, request, session, g, jsonify, redirect, url_for, abort, \
      render_template, flash
 
 # create our little application :)
@@ -23,6 +23,9 @@ app.config.update(dict(
     SECRET_KEY='bZJc2sWbQLKos6GkHn/VB9oXwQt8S0R0kRvJ5/xJ89E=',
     USERNAME='admin',
     PASSWORD='default'
+    IP_SAGE='192.168.25.6',
+    USER_SAGE='sage',
+    PASS_SAGE='sage'
 ))
 app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 
@@ -83,3 +86,8 @@ def detalha_roteiro(roteiro_id):
         liberacoes = query_db('select a.id as id, b.codigo as unidade, descricao from roteiro_manobra_item a inner join unidade b on b.id=a.id_unidade where id_roteiro_manobra=? and procedimento=1 order by 1', [roteiro_id]),
         normalizacoes = query_db('select a.id as id, b.codigo as unidade, descricao from roteiro_manobra_item a inner join unidade b on b.id=a.id_unidade where id_roteiro_manobra=? and procedimento=2 order by 1', [roteiro_id])
         )
+
+@app.route('/execute')
+def executa_roteiro():
+    print request.args.get('id', 0, type=int)
+    return jsonify(result='10:10')
