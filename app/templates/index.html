@@ -1,4 +1,13 @@
 {% extends "layout.html" %}
+{% block title %}
+<div class="container">
+  <h2>Roteiros de Manobras <span>Listagem</span></h2>
+  <div class="breads">
+    Início
+  </div>
+  <div class="clearfix"></div>
+</div>
+{% endblock %}
 {% block body %}
 <div class="s-widget">
     <!-- Heading -->
@@ -34,7 +43,7 @@
               <td>{{ entry.origem }}</td>
               <td>{{ entry.equipamento }}</td>
               <!-- Action -->
-              <td><a href="#" class="button bg-green">Seleciona</a></td>
+              <td><a href="/roteiro/{{ entry.id }}" class="button bg-green">Seleciona</a></td>
             </tr>
             {% else %}
               <tr><td colspan="3">Não há dados</td></tr>

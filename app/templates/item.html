@@ -1,84 +1,73 @@
-							</div>
-								<br />
-							</div>
-							
-							<div class="col-md-4">
-
-							</div>
-						</div>
-					</div>			
-				</div>
-			</div>		
-			<div class="foot">
-				<!-- Container -->
-				<div class="container">
-					<div class="row">
-						<div class="col-md-3 col-sm-6">
-							<!-- Foot Item -->
-							<div class="foot-item">
-								<!-- Heading -->
-								<h5 class="bold"><i class="fa fa-user"></i>&nbsp;&nbsp;Sobre</h5>
-								<p>Sistema desenvolvido com o objetivo de atuar .........</p>
-							</div>
-						</div>	
-						<div class="col-md-6 col-sm-6">
-							<!-- Foot Item -->
-							<div class="foot-item">
-								<!-- Heading -->
-								<h5 class="bold"><i class="fa fa-comments"></i>&nbsp;&nbsp;Manobras Recentes</h5>
-								<!-- Foot Item Content -->
-								<div class="foot-item-content">
-									<ul class="list-unstyled">
-										<!-- Link -->
-										<li><a href="#">01/06/2016 - Desliamento Equipamento XXXX - Augusto XXXX</a></li>
-										<li><a href="#">02/07/2016 - Desliamento Equipamento XXXX - Augusto XXXX</a></li>
-										<li><a href="#">03/05/2016 - Desliamento Equipamento XXXX - Augusto XXXX</a></li>
-										<li><a href="#">04/05/2016 - Desliamento Equipamento XXXX - Augusto XXXX</a></li>
-										<li><a href="#">05/05/2016 - Desliamento Equipamento XXXX - Augusto XXXX</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-6">
-							<!-- Foot Item -->
-							<div class="foot-item">
-								<!-- Heading -->
-								<h5 class="bold"><i class="fa fa-building-o"></i>&nbsp;&nbsp;Contato</h5>
-								<!-- Foot Item Content -->
-								<div class="foot-item-content address">
-									<!-- Heading -->
-									<h6 class="bold"><i class="fa fa-home"></i>&nbsp;&nbsp;Centro de Operações</h6>
-									<!-- Paragraph -->
-									<p class="add">
-									   Rua do Ouvidor, 135, Bairro Bodocongó,<br />
-									   Liberdade - 70.000-000.</p>
-									<p class="tel"> <i class="fa fa-phone"></i> Tel : (083) - 3422 4433<br />
-									<i class="fa fa-envelope"></i>  Email : <a href="#">centrooperacao@chesf.com</a><br />
-									<i class="fa fa-calendar"></i> Horário de trabalho : 9:30 - 5:30</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+{% extends "layout.html" %}
+{% block title %}
+<div class="container">
+  <h2>Roteiros de Manobras <span>Item</span></h2>
+  <div class="breads">
+    Início/roteiro/{{ roteiro.id }}
+  </div>
+  <div class="clearfix"></div>
+</div>
+{% endblock %}
+{% block body %}
+<div class="smart-forms">
+	<form method="post" action="/" id="form-elements">
+		<div class="row">
+			<div class="col-md-6">
+				<label for="origem" class="field-label">Origem </label>
+				<label for="origem" class="field">
+					<input type="text" name="origem" id="origem" class="gui-input" placeholder="Origem" value="{{ roteiro.origem}}">
+				</label>
+			</div>
+			<div class="col-md-6">
+				<label for="origem" class="field-label">Origem </label>
+				<label for="origem" class="field">
+					<input type="text" name="origem" id="origem" class="gui-input" placeholder="Origem" value="{{ roteiro.equipamento }}">
+				</label>
 			</div>
 		</div>
-		<span class="totop"><a href="#"><i class="fa fa-angle-up bg-color"></i></a></span>
-		
-		<script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
-		<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-		<script src="{{ url_for('static', filename='js/placeholders.js') }}"></script>
-		<script src="{{ url_for('static', filename='js/jquery.magnific-popup.min.js') }}"></script>	
-		<script src="{{ url_for('static', filename='js/respond.min.js') }}"></script>
-		<script src="{{ url_for('static', filename='js/html5shiv.js') }}"></script>
-		<script src="{{ url_for('static', filename='js/main.js') }}"></script>		
-		<script src="{{ url_for('static', filename='js/custom.js') }}"></script>
-		<script>
-		$(function(){
-			$('.ui-42 .table-responsive').slimScroll({
-				height: '350px',
-				color: 'rgba(0,0,0,0.3)'
-			});
-		});
-		</script>
-	</body>	
-</html>
+		<div class="row">
+			<div class="col-md-12">
+				<!-- Label -->
+				<label for="textarea" class="field-label">Configuração</label>
+				<label class="field prepend-icon">
+					<textarea class="gui-textarea" id="textarea" name="textarea" placeholder="Text area">{{ roteiro.configuracao }}</textarea>
+					<label class="field-icon"><i class="fa fa-lock"></i></label> 
+					<!-- Small hint block -->
+					<span class="input-hint"> 
+						<strong>Hint:</strong> Configuração inicial do equipamento 
+					</span> 
+				</label>											
+			</div>
+		</div>
+	</form>
+
+  <div class="blog-two-item">
+    <div class="ui-42">
+      <!-- Table -->
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <!-- Table head -->
+            <tr>
+              <th><h5>ORIGEM</h5></th>
+              <th><h5>EQUIPAMENTO</h5></th>
+              <th><h5>AÇÃO</h5></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for entry in entries %}
+            <tr>
+              <td>{{ entry.origem }}</td>
+              <td>{{ entry.equipamento }}</td>
+              <!-- Action -->
+              <td><a href="#" class="button bg-green">Seleciona</a></td>
+            </tr>
+            {% else %}
+              <tr><td colspan="3">Não há dados</td></tr>
+            {% endfor %}
+          </tbody>
+        </table><!-- /Table -->
+      </div>
+    </div>
+  </div>
+{% endblock %}

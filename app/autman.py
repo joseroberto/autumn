@@ -39,6 +39,12 @@ def init_db():
         db.cursor().executescript(f.read())
     db.commit()
 
+def query_db(query, args=(), one=False):
+    """Busca um conjunto e dados."""
+    cur = get_db().execute(query, args)
+    rv = cur.fetchall()
+    return (rv[0] if rv else None) if one else rv
+
 @app.cli.command('initdb')
 def initdb_command():
     """Cria as tabelas do banco de dados."""
@@ -62,11 +68,11 @@ def close_db(error):
 
 @app.route('/')
 def lista_roteiros():
-    db = get_db()
-    cur = db.execute('select a.id as id, b.codigo as origem, c.codigo as equipamento from roteiro_manobra a inner join unidade b on a.id_origem=b.id inner join equipamento c on c.id=a.id_equipamento order by 2,3 desc')
-    entries = cur.fetchall()
+    entries = query_db('select a.id as id, b.codigo as origem, c.codigo as equipamento from roteiro_manobra a inner join unidade b on a.id_origem=b.id inner join equipamento c on c.id=a.id_equipamento order by 2,3 desc')
     return render_template('index.html', entries=entries)
 
-@app.route('/item')
-def detalha_roteiro():
-    return render_template('item.html')
+@app.route('/roteiro/<int:roteiro_id>')
+def detalha_roteiro(roteiro_id):
+    roteiro = query_db('select a.id as id, b.codigo as origem, c.codigo as equipamento, configuracao from roteiro_manobra a inner join unidade b on a.id_origem=b.id inner join equipamento c on c.id=a.id_equipamento where a.id=? order by 2,3 desc',[roteiro_id], one=True)
+
+    return render_template('item.html', roteiro = roteiro)

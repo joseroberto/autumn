@@ -27,7 +27,11 @@
 		
 		<!-- Custom CSS. Type your CSS code in custom.css file -->
 		<link href="{{ url_for('static', filename='css/custom.css') }}" rel="stylesheet">
-		
+		<!-- Smart form -->
+		<link href="{{ url_for('static', filename='css/smart-forms.css') }}" rel="stylesheet">
+		<!--[if lte IE 8]>
+			<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/smart-forms-ie8.css') }}">
+		<![endif]-->	
 		<!-- Favicon -->
 		<link rel="shortcut icon" href="#">
 	</head>
@@ -72,13 +76,7 @@
 			</div>
 			<div class="main-block">
 				<div class="page-heading-two">
-					<div class="container">
-						<h2>Roteiros de Manobras <span>Listagem</span></h2>
-						<div class="breads">
-							Início
-						</div>
-						<div class="clearfix"></div>
-					</div>
+					{% block title %}{% endblock %}
 				</div>
 				<div class="container">
 					<div class="blog-two">
