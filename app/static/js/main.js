@@ -42,45 +42,6 @@ $(document).ready(function(){
    }); 
 });
 
-/* ************ */
-/* Owl Carousel */
-/* ************ */
-
-$(document).ready(function() {	
-	/* Owl carousel */
-	$(".owl-carousel").owlCarousel({
-		slideSpeed : 500,
-		rewindSpeed : 1000,
-		mouseDrag : true,
-		stopOnHover : true
-	});
-	/* Own navigation */
-	$(".owl-nav-prev").click(function(){
-		$(this).parent().next(".owl-carousel").trigger('owl.prev');
-	});
-	$(".owl-nav-next").click(function(){
-		$(this).parent().next(".owl-carousel").trigger('owl.next');
-	});
-});
-
-/* ************* */
-/* Scroll to top */
-/* ************* */
-
-$(document).ready(function() {
-	$(window).scroll(function(){
-		if ($(this).scrollTop() > 200) {
-			$('.totop').fadeIn();
-		} else {
-			$('.totop').fadeOut();
-		}
-	});
-	$(".totop a").click(function(e) {
-		e.preventDefault();
-		$("html, body").animate({ scrollTop: 0 }, "slow");
-		return false;
-	});
-});
 
 /* *************** */
 /* Navigation menu */

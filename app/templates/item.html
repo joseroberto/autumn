@@ -1,13 +1,5 @@
 {% extends "layout.html" %}
 {% block title %}
-<script>
-$(document).ready(function(){
-    $("button").click(function(){
-        alert('Ok');
-    });
-});
-</script>
-
 <div class="container">
   <h2>Roteiros de Manobras <span>Item</span></h2>
   <div class="breads">
@@ -92,14 +84,10 @@ $(document).ready(function(){
               <td>1.{{loop.index}}</td>
               <td>{{ item.unidade }}</td>
               <td>{{ item.descricao }}</td>
-              <td> : </td>
+              <td><span class="hora"> : </span></td>
               <!-- Action -->
               <td>
-<<<<<<< HEAD
-                <button id="btn" class="btn btn-sm btn-grey"><span><i class="fa fa-heart"></i> Executado</span></button>
-=======
-                <button class="btn btn-sm btn-grey"><span><i class="fa fa-check-square-o" aria-hidden="true"></i> Executado</span></button>
->>>>>>> 5a104535f83883f89eaf08892202e2ad0e6fc99c
+                <a class="btn btn-sm btn-grey" item-id="{{ item.id }}"><span><i class="fa fa-check-square-o" aria-hidden="true"></i> Executado</span></a>
               </td>
             </tr>
             {% else %}
@@ -125,14 +113,14 @@ $(document).ready(function(){
           <tbody>
             {% for item in normalizacoes %}
             <tr>
-              <td>2.{{loop.index}}</td>
+              <td>2.{{loop.index}}<input type="hidden" name="id" value="" id="id" value="{{ item.id }}"></td>
               <td>{{ item.unidade }}</td>
               <td>{{ item.descricao }}</td>
               <td> : </td>
               <!-- Action -->
               <td>
                 <div class="option-group field">
-                  <button class="btn btn-sm btn-green"><i class="fa fa-square-o" aria-hidden="true"></i> Executa</i></button>
+                  <a id="btn-{{ item.id }}" class="btn btn-sm btn-green"><i class="fa fa-square-o" aria-hidden="true"></i> Executa</i></a>
                 </div>
               </td>
             </tr>
@@ -145,4 +133,5 @@ $(document).ready(function(){
       </div>
     </div>
   </div>
+
 {% endblock %}

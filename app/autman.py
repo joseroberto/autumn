@@ -12,6 +12,7 @@ import sys
 from sqlite3 import dbapi2 as sqlite3
 from flask import Flask, request, session, g, jsonify, redirect, url_for, abort, \
      render_template, flash
+from time import gmtime, strftime
 
 # create our little application :)
 app = Flask(__name__)
@@ -22,7 +23,7 @@ app.config.update(dict(
     DEBUG=True,
     SECRET_KEY='bZJc2sWbQLKos6GkHn/VB9oXwQt8S0R0kRvJ5/xJ89E=',
     USERNAME='admin',
-    PASSWORD='default'
+    PASSWORD='default',
     IP_SAGE='192.168.25.6',
     USER_SAGE='sage',
     PASS_SAGE='sage'
@@ -90,4 +91,11 @@ def detalha_roteiro(roteiro_id):
 @app.route('/execute')
 def executa_roteiro():
     print request.args.get('id', 0, type=int)
-    return jsonify(result='10:10')
+    tempo = gmtime()
+    hora = strftime("%H:%M", tempo)
+
+    return jsonify(hora=hora)
+
+@app.route('/teste')
+def executa_teste():
+    return render_template('teste.html')
