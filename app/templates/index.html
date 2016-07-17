@@ -1,79 +1,47 @@
 {% extends "layout.html" %}
 {% block body %}
-<div class="ui-42">
-  <!-- Table -->
-  <div class="table-responsive">
-    <table class="table">
-      <thead>
-        <!-- Table head -->
-        <tr>
-          <th><h5>DATE</h5></th>
-          <th><h5>NAME</h5></th>
-          <th><h5>STATUS</h5></th>
-          <th><h5>ACTION</h5></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <!-- Date -->
-          <td><h4>12/04/14</h4></td>
-          <!-- Name -->
-          <td><h4>Finance</h4></td>
-          <!-- Status -->
-          <td><h4 class="black"><i class="fa fa-arrow-up green"></i> &nbsp;10.12</h4></td
-          <!-- Action -->
-          <td><a href="#" class="button bg-green">Download</a></td>
-        </tr>
-        <tr>
-          <td><h4>13/04/14</h4></td>
-          <td><h4>Marketing</h4></td>
-          <td><h4 class="black"><i class="fa fa-arrow-down red"></i> &nbsp;10.12</h4></td>
-          <td><a href="#" class="button bg-red">Delete</a></td>
-        </tr>
-        <tr>
-          <td><h4>14/04/14</h4></td>
-          <td><h4>Trading</h4></td>
-          <td><h4 class="black"><i class="fa fa-arrow-up green"></i> &nbsp;10.12</h4></td>
-          <td><a href="#" class="button bg-lblue">Update</a></td>
-        </tr>
-        <tr>
-          <td><h4>15/04/14</h4></td>
-          <td><h4>Stock</h4></td>
-          <td><h4 class="black"><i class="fa fa-arrow-down red"></i> &nbsp;10.12</h4></td>
-          <td><a href="#" class="button bg-blue">Modify</a></td>
-        </tr>
-        <tr>
-          <td><h4>16/04/14</h4></td>
-          <td><h4>Exchange</h4></td>
-          <td><h4 class="black"><i class="fa fa-arrow-up green"></i> &nbsp;10.12</h4></td>
-          <td><a href="#" class="button bg-yellow">Change</a></td>
-        </tr>
-        <tr>
-          <td><h4>17/04/14</h4></td>
-          <td><h4>Stock</h4></td>
-          <td><h4 class="black"><i class="fa fa-arrow-up green"></i> &nbsp;10.12</h4></td>
-          <td><a href="#" class="button bg-orange">Remove</a></td>
-        </tr>
-        <tr>
-          <td><h4>18/04/14</h4></td>
-          <td><h4>Marketing</h4></td>
-          <td><h4 class="black"><i class="fa fa-arrow-down red"></i> &nbsp;10.12</h4></td>
-          <td><a href="#" class="button bg-purple">Delete</a></td>
-        </tr>
-        <tr>
-          <td><h4>19/04/14</h4></td>
-          <td><h4>Trading</h4></td>
-          <td><h4 class="black"><i class="fa fa-arrow-up green"></i> &nbsp;10.12</h4></td>
-          <td><a href="#" class="button bg-brown">Download</a></td>
-        </tr>
-        <tr>
-          <td><h4>16/04/14</h4></td>
-          <td><h4>Exchange</h4></td>
-          <td><h4 class="black"><i class="fa fa-arrow-up green"></i> &nbsp;10.12</h4></td>
-          <td><a href="#" class="button bg-green">Modify</a></td>
-        </tr>
-      </tbody>
-    </table><!-- /Table -->
+<div class="s-widget">
+    <!-- Heading -->
+    <h5><i class="fa fa-search color"></i>&nbsp; Busca</h5>
+    <!-- Widgets Content -->
+    <div class="widget-content search">
+      <form role="form">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Digite o codigo do equipamento ou substação">
+          <span class="input-group-btn">
+            <button class="btn btn-color" type="button">Pesquisa</button>
+          </span>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
+  <div class="blog-two-item">
+    <div class="ui-42">
+      <!-- Table -->
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <!-- Table head -->
+            <tr>
+              <th><h5>ORIGEM</h5></th>
+              <th><h5>EQUIPAMENTO</h5></th>
+              <th><h5>AÇÃO</h5></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for entry in entries %}
+            <tr>
+              <td>{{ entry.origem }}</td>
+              <td>{{ entry.equipamento }}</td>
+              <!-- Action -->
+              <td><a href="#" class="button bg-green">Seleciona</a></td>
+            </tr>
+            {% else %}
+              <tr><td colspan="3">Não há dados</td></tr>
+            {% endfor %}
+          </tbody>
+        </table><!-- /Table -->
+      </div>
+    </div>
+  </div>
 {% endblock %}

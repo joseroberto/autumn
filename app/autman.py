@@ -62,11 +62,10 @@ def close_db(error):
 
 @app.route('/')
 def lista_roteiros():
-    #db = get_db()
-    #cur = db.execute('select title, text from entries order by id desc')
-    #entries = cur.fetchall()
-    #return render_template('show_entries.html', entries=entries)
-    return render_template('index.html')
+    db = get_db()
+    cur = db.execute('select a.id as id, b.codigo as origem, c.codigo as equipamento from roteiro_manobra a inner join unidade b on a.id_origem=b.id inner join equipamento c on c.id=a.id_equipamento order by 2,3 desc')
+    entries = cur.fetchall()
+    return render_template('index.html', entries=entries)
 
 @app.route('/item')
 def detalha_roteiro():
