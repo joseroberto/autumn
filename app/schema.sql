@@ -1,6 +1,5 @@
-﻿drop table if exists equipamento;
-drop table if exists unidade;
-drop table if exists roteiro_manobra;
+drop table if exists equipamento;
+drop table if exists unidade; drop table if exists roteiro_manobra;
 drop table if exists roteiro_manobra_item;
 drop table if exists roteiro_comando;
 drop table if exists usuario;

@@ -85,9 +85,11 @@
               <td>{{ item.unidade }}</td>
               <td>{{ item.descricao }}</td>
               <td><span class="hora"> : </span></td>
-              <!-- Action -->
+              <!-- Action btn btn-sm btn-grey fa-check-square-o-->
               <td>
-                <a class="btn btn-sm btn-grey" item-id="{{ item.id }}"><span><i class="fa fa-check-square-o" aria-hidden="true"></i> Executado</span></a>
+                <a class="btn btn-sm btn-green" item-id="{{ item.id }}">
+                  <span class="botao"><i class="fa fa-square-o" aria-hidden="true"></i> Executa</span>
+                </a>
               </td>
             </tr>
             {% else %}
@@ -119,7 +121,9 @@
               <td><span class="hora"> : </span></</td>
               <!-- Action -->
               <td>
-                  <a class="btn btn-sm btn-green" item-id="{{ item.id }}"><span><i class="fa fa-square-o" aria-hidden="true"></i> Executa</span></a>
+                  <a class="btn btn-sm btn-green" item-id="{{ item.id }}">
+                    <span><i class="fa fa-square-o" aria-hidden="true"></i> Executa</span>
+                    </a>
               </td>
             </tr>
             {% else %}

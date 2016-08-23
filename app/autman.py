@@ -12,7 +12,7 @@ import sys
 from sqlite3 import dbapi2 as sqlite3
 from flask import Flask, request, session, g, jsonify, redirect, url_for, abort, \
      render_template, flash
-from time import gmtime, strftime
+from time import gmtime, strftime, localtime
 import paramiko
 
 # create our little application :)
@@ -47,6 +47,7 @@ def init_db():
         try:
             db.cursor().executescript(linha)
         except:
+            print "Unexpected error:", sys.exc_info()[0]
             print ('Erro:', linha) 
     db.commit()
 
@@ -106,9 +107,9 @@ def detalha_roteiro(roteiro_id):
 @app.route('/execute')
 def executa_roteiro():
     id = request.args.get('id', 0, type=int)
-    tempo = gmtime()
+    tempo = localtime()
     hora = strftime("%H:%M", tempo)
-
+    app.logger.warning('Hora: %s' %(hora))
     comandos = query_db('select c.codigo as equipamento, c.tipo as tipo, a.comando as comando, d.codigo as unidade from roteiro_comando a inner join roteiro_manobra_item b on b.id=a.id_roteiro_manobra_item inner join equipamento c on c.id=a.id_equipamento inner join unidade d on d.id=b.id_unidade  where id_roteiro_manobra_item=?',[id])
 
     if comandos:
@@ -128,5 +129,8 @@ def executa_roteiro():
         ssh.close()
 
     return jsonify(hora=hora)
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5000)
 
  
