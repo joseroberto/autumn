@@ -1,0 +1,10 @@
+#!/bin/bash
+
+##jun2216.alr
+
+FILE=`date +%b%d%y.alr| tr '[:upper:]' '[:lower:]'`
+HOUR=`date +%H:%M:%S`
+ID_DISJ=`echo $1|cut -d':' -f2`
+
+if [ $2 -eq 0 ]; then TYPE='Abriu'; else TYPE='Fechou'; fi
+printf "%8s Disjuntor %s %40s \t\t\t\t\t Disjuntor %s\n" $HOUR $TYPE $1 $ID_DISJ >> $FILE

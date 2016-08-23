@@ -1,0 +1,4 @@
+ip_sage: 192.168.25.6
+user: sage
+password: sage
+dir: /tmp/sage/arqs

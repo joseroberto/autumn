@@ -29,6 +29,11 @@ $('#tbl2').on('click', '.btn', function(e){
     async: false, 
     success: function(result){
         hora.html(result.hora);
+        var label = linha.find('.botao');
+        label.html('<i class="fa fa-check-square-o" aria-hidden="true"></i> Executado');
+        label.parent().removeClass('btn-green');
+        label.parent().addClass('btn-grey');
+        label.parent().prop('disabled', function(i, v) { return !v; });
     },
     data: {id:itemid}
     });

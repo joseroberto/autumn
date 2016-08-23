@@ -9,26 +9,32 @@
 """
 import os
 import sys
+import yaml
 from sqlite3 import dbapi2 as sqlite3
 from flask import Flask, request, session, g, jsonify, redirect, url_for, abort, \
      render_template, flash
-from time import gmtime, strftime, localtime
+from time import gmtime, strftime, localtime, strptime
 import paramiko
 
 # create our little application :)
 app = Flask(__name__)
+
+with open("../conf/config.yaml", 'r') as stream:
+    try:
+        config = yaml.load(stream)
+        print(config)
+    except yaml.YAMLError as exc:
+        print(exc)
 
 # Load default config and override config from an environment variable
 app.config.update(dict(
     DATABASE=os.path.join(app.root_path, 'autman.db'),
     DEBUG=True,
     SECRET_KEY='bZJc2sWbQLKos6GkHn/VB9oXwQt8S0R0kRvJ5/xJ89E=',
-    USERNAME='admin',
-    PASSWORD='default',
-    IP_SAGE='192.168.25.6',
-    USER_SAGE='sage',
-    PASS_SAGE='sage',
-    DIR_SAGE='/tmp/sage/arqs'
+    IP_SAGE=config['ip_sage'], 
+    USER_SAGE=config['user'], 
+    PASS_SAGE=config['password'],
+    DIR_SAGE=config['dir']
 ))
 app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 
@@ -108,26 +114,40 @@ def detalha_roteiro(roteiro_id):
 def executa_roteiro():
     id = request.args.get('id', 0, type=int)
     tempo = localtime()
-    hora = strftime("%H:%M", tempo)
-    app.logger.warning('Hora: %s' %(hora))
+
     comandos = query_db('select c.codigo as equipamento, c.tipo as tipo, a.comando as comando, d.codigo as unidade from roteiro_comando a inner join roteiro_manobra_item b on b.id=a.id_roteiro_manobra_item inner join equipamento c on c.id=a.id_equipamento inner join unidade d on d.id=b.id_unidade  where id_roteiro_manobra_item=?',[id])
 
     if comandos:
+        comandocat = ("cat %s/%s.alr" % (app.config['DIR_SAGE'], strftime("%b%d%y", tempo))).lower()
         ssh = paramiko.SSHClient()
         ssh.load_system_host_keys()
         ssh.connect(app.config['IP_SAGE'], username=app.config['USER_SAGE'], password=app.config['PASS_SAGE'])
-
+        ultimo_equipamento = ''
+        ultimo_comando = ''
         for item_comando in comandos:
-            ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command("sage_ctrl %s:%s:%d %d" % (item_comando['unidade'], item_comando['equipamento'],item_comando['tipo'], item_comando['comando']))            
-            ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command(("cat %s/%s.alr" % (app.config['DIR_SAGE'], strftime("%b%d%y", tempo))).lower())
+            app.logger.info(item_comando)
+            equipamento = "%s:%s:%d" % (item_comando['unidade'], item_comando['equipamento'],item_comando['tipo'])
             
-            linhas = ssh_stdout.readlines();
-            print u(linhas)
-            #for line in ssh_stdout:
-            #    print '... ' + line.strip('\n').decode('iso-8859-1').encode('utf8')
+            app.logger.info("sage_ctrl %s %d" % (equipamento, item_comando['comando']))
+            ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command("sage_ctrl %s:%s:%d %d" % (item_comando['unidade'], item_comando['equipamento'],item_comando['tipo'], item_comando['comando']))            
+            
+            ultimo_equipamento = equipamento
+            ultimo_comando = 'Abriu' if item_comando['comando']==0 else 'Fechou'
+
+        app.logger.info(comandocat)
+        ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command(comandocat)
+            
+        linhas = ssh_stdout.readlines()
+
+        ind_ocorrencia = next(i for i,v in zip(range(len(linhas)-1, 0, -1), reversed(linhas)) if (ultimo_equipamento in v) and (ultimo_comando in v)) 
+            
+        horastr = linhas[ind_ocorrencia].split()[0]
+        app.logger.info(horastr)
+        tempo = strptime(horastr, '%H:%M:%S')
 
         ssh.close()
 
+    hora = strftime("%H:%M", tempo)
     return jsonify(hora=hora)
 
 if __name__ == "__main__":
