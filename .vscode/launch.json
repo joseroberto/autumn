@@ -5,8 +5,8 @@
             "name": "Python",
             "type": "python",
             "request": "launch",
-            "stopOnEntry": true,
-            "program": "${workspaceRoot}/testssh.py",
+            "stopOnEntry": false,
+            "program": "${workspaceRoot}/app/autman.py",
             "debugOptions": [
                 "WaitOnAbnormalExit",
                 "WaitOnNormalExit",
@@ -14,12 +14,13 @@
             ]
         },
         {
-            "name": "Python Console App",
+            "name": "Init DB",
             "type": "python",
             "request": "launch",
-            "stopOnEntry": true,
-            "program": "${file}",
-            "externalConsole": true,
+            "stopOnEntry": false,
+            "program": "${workspaceRoot}/flask",
+            "args": ["initdb"],
+            "externalConsole": false,
             "debugOptions": [
                 "WaitOnAbnormalExit",
                 "WaitOnNormalExit"
