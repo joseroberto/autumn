@@ -27,7 +27,8 @@ app.config.update(dict(
     PASSWORD='default',
     IP_SAGE='192.168.25.6',
     USER_SAGE='sage',
-    PASS_SAGE='sage'
+    PASS_SAGE='sage',
+    DIR_SAGE='/tmp/sage/arqs'
 ))
 app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 
@@ -76,6 +77,19 @@ def close_db(error):
     if hasattr(g, 'sqlite_db'):
         g.sqlite_db.close()
 
+def u(s, encoding='utf8'):
+    """cast bytes or unicode to unicode"""
+    if isinstance(s, bytes):
+        try:
+            return s.decode(encoding)
+        except UnicodeDecodeError:
+            return s.decode('ISO-8859-1')
+    elif isinstance(s, str):
+        return s
+    else:
+        raise TypeError("Expected unicode or bytes, got %r" % s)
+
+
 @app.route('/')
 def lista_roteiros():
     entries = query_db('select a.id as id, b.codigo as origem, c.codigo as equipamento from roteiro_manobra a inner join unidade b on a.id_origem=b.id inner join equipamento c on c.id=a.id_equipamento order by 2,3 desc')
@@ -104,8 +118,15 @@ def executa_roteiro():
 
         for item_comando in comandos:
             ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command("sage_ctrl %s:%s:%d %d" % (item_comando['unidade'], item_comando['equipamento'],item_comando['tipo'], item_comando['comando']))            
-            print "sage_ctrl %s:%s:%d %d" % (item_comando['unidade'], item_comando['equipamento'],item_comando['tipo'], item_comando['comando'])
-        
+            ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command(("cat %s/%s.alr" % (app.config['DIR_SAGE'], strftime("%b%d%y", tempo))).lower())
+            
+            linhas = ssh_stdout.readlines();
+            print u(linhas)
+            #for line in ssh_stdout:
+            #    print '... ' + line.strip('\n').decode('iso-8859-1').encode('utf8')
+
         ssh.close()
 
     return jsonify(hora=hora)
+
+ 
