@@ -155,55 +155,6 @@ insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade,
 insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (30, 5, 'Retornar operação da SE para o nível 3',3, 2);
 insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (31, 5, 'Informar CROL conclusão normalização 14F8',3, 2);
 
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (66, 7, 'Receber do responsável solicitação liberação 14W1.', 3, 1);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (67, 7, 'Solicitar CROL liberação 14W1.', 3, 1);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (68, 7, 'Solicitar COSR-NE autorização liberação 14W1/CTM', 3, 1);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (69, 7, 'Autorizar CROL liberação 14W1/CTM.', 3, 1);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (70, 7, 'Autorizar CTM liberação 14W1', 3, 1);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (71, 7, 'Colocar operação da SE no nível 2', 3, 1);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (72, 7, 'Confirmar 14D1 fechado.', 3, 1);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (73, 7, 'Fechar 34F8-1.', 3, 1);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (74, 7, 'Abrir 34F8-2', 3, 1);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (75, 7, 'Colocar proteção 14W1 na posição EM TRANSFERÊNCIA', 3, 1);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (76, 7, 'Fechar 34W1-6.', 3, 1);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (77, 7, 'Abrir 14W1.', 3, 1);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (78, 7, 'Abrir 34W1-1 e 34W1-5', 3, 1);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (79, 7, 'Colocar proteção 14W1 na posição TRANSFERIDO', 3, 1);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (80, 7, 'Bloquear comando elétrico 34W1-1, 34W1-2 e 34W1-5.', 3, 1);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (81, 7, 'Entregar 14W1 isolado ao responsável.', 3, 1);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (82, 7, 'Retornar operação da SE para o nível 3', 3, 1);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (83, 7, 'Informar CROL conclusão liberação 14W1', 3, 1);
-
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (84, 7, 'Receber do responsável 14W1 livre para operação', 3, 2);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (85, 7, 'Confirmar ausência de aterramento temporário.', 3, 2);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (86, 7, 'Solicitar CROL normalização 14W1', 3, 2);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (87, 7, 'Solicitar COSR-NE autorização normalização 14W1/CTM', 3, 2);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (88, 7, 'Autorizar CROL normalização 14W1/CTM', 3, 2);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (89, 7, 'Autorizar CTM normalização 14W1', 3, 2);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (90, 7, 'Colocar operação da SE no nível 2', 3, 2);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (91, 7, 'Desbloquear comando elétrico 34W1-1, 34W1-2 e 34W1-5', 3, 2);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (92, 7, 'Colocar proteção 14W1 na posição EM TRANSFERÊNCIA', 3, 2);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (93, 7, 'Fechar 34W1-1 e 34W1-5', 3, 2);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (94, 7, 'Fechar 14W1.', 3, 2);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (95, 7, 'Abrir 34W1-6', 3, 2);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (96, 7, 'Colocar proteção 14W1 na posição NORMAL', 3, 2);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (97, 7, 'Fechar 34F8-2.', 3, 2);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (98, 7, 'Abrir 34F8-1.', 3, 2);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (99, 7, 'Retornar operação da SE para o nível 3', 3, 2);
-insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (100, 7, 'Informar CROL conclusão normalização 14W1.', 3, 2);
-
-insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (9, 9, 1);
-insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (10, 5, 0);
-insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (11, 7, 0);
-insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (11, 8, 0);
-
-insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (26, 7, 1);
-insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (26, 8, 1);
-insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (27, 5, 1);
-insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (28, 9, 0);
-
-
-
 insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (32, 6, 'Receber do responsável solicitação liberação 14C3',3, 1);
 insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (33, 6, 'Solicitar CROL liberação 14C3.',3, 1);
 insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (34, 6, 'Solicitar COSR-NE autorização liberação 14C3/CTM.',4 ,1);
@@ -223,20 +174,6 @@ insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade,
 insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (48, 6, 'Retornar operação da SE para o nível 3',3, 1);
 insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (49, 6, 'Informar CROL conclusão liberação 14C3.',3, 1);
 
-insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (73, 6, 1);
-insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (74, 7, 0);
-insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (76, 19, 1);
-insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (77, 15, 0);
-insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (78, 16, 0);
-insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (78, 18, 0);
-
-insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (93, 16, 1);
-insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (93, 18, 1);
-insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (94, 15, 1);
-insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (95, 19, 0);
-insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (97, 7, 1);
-insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (98, 6, 0);
-
 insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (50, 6, 'Receber do responsável 14C3 livre para operação.',3, 2);
 insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (51, 6, 'Confirmar ausência de aterramento temporário.',3, 2);
 insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (52, 6, 'Solicitar CROL normalização 14C3.',3 ,2);
@@ -255,6 +192,53 @@ insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade,
 insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (65, 6, 'Retornar operação da SE para o nível 3',3, 2);
 insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (66, 6, 'Informar CROL conclusão normalização 14C3.',3, 2);
 
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (67, 7, 'Receber do responsável solicitação liberação 14W1.', 3, 1);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (68, 7, 'Solicitar CROL liberação 14W1.', 3, 1);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (69, 7, 'Solicitar COSR-NE autorização liberação 14W1/CTM', 3, 1);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (70, 7, 'Autorizar CROL liberação 14W1/CTM.', 3, 1);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (71, 7, 'Autorizar CTM liberação 14W1', 3, 1);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (72, 7, 'Colocar operação da SE no nível 2', 3, 1);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (73, 7, 'Confirmar 14D1 fechado.', 3, 1);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (74, 7, 'Fechar 34F8-1.', 3, 1);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (75, 7, 'Abrir 34F8-2', 3, 1);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (76, 7, 'Colocar proteção 14W1 na posição EM TRANSFERÊNCIA', 3, 1);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (77, 7, 'Fechar 34W1-6.', 3, 1);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (78, 7, 'Abrir 14W1.', 3, 1);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (79, 7, 'Abrir 34W1-1 e 34W1-5', 3, 1);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (80, 7, 'Colocar proteção 14W1 na posição TRANSFERIDO', 3, 1);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (81, 7, 'Bloquear comando elétrico 34W1-1, 34W1-2 e 34W1-5.', 3, 1);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (82, 7, 'Entregar 14W1 isolado ao responsável.', 3, 1);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (83, 7, 'Retornar operação da SE para o nível 3', 3, 1);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (84, 7, 'Informar CROL conclusão liberação 14W1', 3, 1);
+
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (85, 7, 'Receber do responsável 14W1 livre para operação', 3, 2);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (86, 7, 'Confirmar ausência de aterramento temporário.', 3, 2);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (87, 7, 'Solicitar CROL normalização 14W1', 3, 2);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (88, 7, 'Solicitar COSR-NE autorização normalização 14W1/CTM', 3, 2);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (89, 7, 'Autorizar CROL normalização 14W1/CTM', 3, 2);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (90, 7, 'Autorizar CTM normalização 14W1', 3, 2);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (91, 7, 'Colocar operação da SE no nível 2', 3, 2);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (92, 7, 'Desbloquear comando elétrico 34W1-1, 34W1-2 e 34W1-5', 3, 2);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (93, 7, 'Colocar proteção 14W1 na posição EM TRANSFERÊNCIA', 3, 2);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (94, 7, 'Fechar 34W1-1 e 34W1-5', 3, 2);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (95, 7, 'Fechar 14W1.', 3, 2);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (96, 7, 'Abrir 34W1-6', 3, 2);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (97, 7, 'Colocar proteção 14W1 na posição NORMAL', 3, 2);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (98, 7, 'Fechar 34F8-2.', 3, 2);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (99, 7, 'Abrir 34F8-1.', 3, 2);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (100, 7, 'Retornar operação da SE para o nível 3', 3, 2);
+insert into roteiro_manobra_item (id, id_roteiro_manobra, descricao, id_unidade, procedimento) values (101, 7, 'Informar CROL conclusão normalização 14W1.', 3, 2);
+
+insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (9, 9, 1);
+insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (10, 5, 0);
+insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (11, 7, 0);
+insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (11, 8, 0);
+
+insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (26, 7, 1);
+insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (26, 8, 1);
+insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (27, 5, 1);
+insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (28, 9, 0);
+
 insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (39, 6, 1);
 insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (40, 7, 0);
 insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (42, 14, 1);
@@ -268,6 +252,22 @@ insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) v
 insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (61, 14, 0);
 insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (63, 7, 1);
 insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (64, 6, 0);
+
+insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (74, 6, 1);
+insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (75, 7, 0);
+insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (77, 19, 1);
+insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (78, 15, 0);
+insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (79, 16, 0);
+insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (79, 18, 0);
+
+insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (94, 16, 1);
+insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (94, 18, 1);
+insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (95, 15, 1);
+insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (96, 19, 0);
+insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (98, 7, 1);
+insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (99, 6, 0);
+
+
 
 insert into usuario (usuario) values ('sergiod');
 insert into usuario (usuario) values ('wmbrito');
