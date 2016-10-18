@@ -1,13 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-    Autman
-    ~~~~~~
-    Sistema de automanção de manobras.
 
-    :copyright: (c) 2015 by Sergio Dias.
-    :license: BSD, see LICENSE for more details.
-"""
-import os
 import sys
 import yaml
 from sqlite3 import dbapi2 as sqlite3
@@ -15,28 +7,7 @@ from flask import Flask, request, session, g, jsonify, redirect, url_for, abort,
      render_template, flash
 from time import gmtime, strftime, localtime, strptime
 import paramiko
-
-# create our little application :)
-app = Flask(__name__)
-
-with open("../conf/config.yaml", 'r') as stream:
-    try:
-        config = yaml.load(stream)
-        print(config)
-    except yaml.YAMLError as exc:
-        print(exc)
-
-# Load default config and override config from an environment variable
-app.config.update(dict(
-    DATABASE=os.path.join(app.root_path, 'autman.db'),
-    DEBUG=True,
-    SECRET_KEY='bZJc2sWbQLKos6GkHn/VB9oXwQt8S0R0kRvJ5/xJ89E=',
-    IP_SAGE=config['ip_sage'], 
-    USER_SAGE=config['user'], 
-    PASS_SAGE=config['password'],
-    DIR_SAGE=config['dir']
-))
-app.config.from_envvar('FLASKR_SETTINGS', silent=True)
+from app import app, login_manager
 
 def connect_db():
     """Conecta a um banco de dados."""
@@ -150,7 +121,5 @@ def executa_roteiro():
     hora = strftime("%H:%M", tempo)
     return jsonify(hora=hora)
 
-if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
 
  

@@ -1,4 +1,6 @@
-ip_sage: 192.168.25.6
-user: sage
-password: sage
-dir: /tmp/sage/arqs
+IP_SAGE: 192.168.25.6
+USER_SAGE: sage
+PASS_SAGE: sage
+DIR_SAGE: /tmp/sage/arqs
+SECRET_KEY: bZJc2sWbQLKos6GkHn/VB9oXwQt8S0R0kRvJ5/xJ89E=
+DEBUG: True

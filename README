@@ -2,7 +2,7 @@
 
 pip install --editable .
 
-export FLASK_APP=app.autman
+export FLASK_APP=./start.py
 
 flask initdb
 

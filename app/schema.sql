@@ -50,7 +50,8 @@ create table roteiro_comando(
 
 create table usuario(
   id integer primary key autoincrement,
-  usuario text not null
+  usuario text not null,
+  senha text not null
 );
 
 create table execucao(
@@ -269,27 +270,25 @@ insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) v
 insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (63, 7, 1);
 insert into roteiro_comando (id_roteiro_manobra_item, id_equipamento, comando) values (64, 6, 0);
 
-insert into usuario (usuario) values ('sergiod');
-insert into usuario (usuario) values ('wmbrito');
-insert into usuario (usuario) values ('stlira');
-insert into usuario (usuario) values ('italofa');
-insert into usuario (usuario) values ('darciomj');
-insert into usuario (usuario) values ('evandros');
-insert into usuario (usuario) values ('pdias');
-insert into usuario (usuario) values ('marcals');
-insert into usuario (usuario) values ('cesarino');
-insert into usuario (usuario) values ('wdenil');
-insert into usuario (usuario) values ('halison');
-insert into usuario (usuario) values ('eliedesm');
-insert into usuario (usuario) values ('canide');
-insert into usuario (usuario) values ('manuelpf');
-insert into usuario (usuario) values ('mslima');
-insert into usuario (usuario) values ('dgsavio');
-insert into usuario (usuario) values ('rogeriop');
-insert into usuario (usuario) values ('johnvas');
-insert into usuario (usuario) values ('inacios');
-insert into usuario (usuario) values ('johnvas');
-insert into usuario (usuario) values ('dmarques');
-insert into usuario (usuario) values ('eduarte');
-
-
+insert into usuario (usuario, senha) values ('sergiod', '12345678');
+insert into usuario (usuario, senha) values ('wmbrito', '12345678');
+insert into usuario (usuario, senha) values ('stlira', '12345678');
+insert into usuario (usuario, senha) values ('italofa', '12345678');
+insert into usuario (usuario, senha) values ('darciomj', '12345678');
+insert into usuario (usuario, senha) values ('evandros', '12345678');
+insert into usuario (usuario, senha) values ('pdias', '12345678');
+insert into usuario (usuario, senha) values ('marcals', '12345678');
+insert into usuario (usuario, senha) values ('cesarino', '12345678');
+insert into usuario (usuario, senha) values ('wdenil', '12345678');
+insert into usuario (usuario, senha) values ('halison', '12345678');
+insert into usuario (usuario, senha) values ('eliedesm', '12345678');
+insert into usuario (usuario, senha) values ('canide', '12345678');
+insert into usuario (usuario, senha) values ('manuelpf', '12345678');
+insert into usuario (usuario, senha) values ('mslima', '12345678');
+insert into usuario (usuario, senha) values ('dgsavio', '12345678');
+insert into usuario (usuario, senha) values ('rogeriop', '12345678');
+insert into usuario (usuario, senha) values ('johnvas', '12345678');
+insert into usuario (usuario, senha) values ('inacios', '12345678');
+insert into usuario (usuario, senha) values ('johnvas', '12345678');
+insert into usuario (usuario, senha) values ('dmarques', '12345678');
+insert into usuario (usuario, senha) values ('eduarte', '12345678');
