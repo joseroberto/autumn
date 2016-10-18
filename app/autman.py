@@ -121,5 +121,7 @@ def executa_roteiro():
     hora = strftime("%H:%M", tempo)
     return jsonify(hora=hora)
 
-
- 
+    
+@app.route('/login')
+def login():
+    return render_template('login.html')
