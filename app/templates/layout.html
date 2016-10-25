@@ -55,7 +55,13 @@
 					</div>
 					<!-- Contact ends -->
 					
-					<div class="clearfix"></div>
+
+					<div class="tb-contact pull-right">
+						{% if current_user.is_authenticated %}
+							{{ current_user.username }}
+							<a class="btn btn-xs btn-blue" href="/logout">Logout</a>
+						{% endif %}
+					</div>
 				</div>
 			</div>
 			<div class="header-2">

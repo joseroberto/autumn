@@ -15,10 +15,8 @@ login_manager.login_view = 'login'
 with open("conf/config.yaml", 'r') as stream:
     try:
         config = yaml.load(stream)
-        print(config)
     except yaml.YAMLError as exc:
         print(exc)
-
 
 
 app.config.update(config)

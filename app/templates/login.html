@@ -41,27 +41,27 @@
 				<h4>Login</h4>
 				<br />
 				<!-- Form -->
-				<form class="form-horizontal" role="form">
+				<form class="form-horizontal" role="form" action="/login" method="POST"">
 					<!-- Form Group -->
 					<div class="form-group">
 						<!-- Label -->
 						<label for="user" class="col-sm-3 control-label">Usuário</label>
 						<div class="col-sm-9">
 							<!-- Input -->
-						  <input type="text" class="form-control" id="user" placeholder="Entre com o usuário">
+						  <input type="text" class="form-control" id="user" name="usuario" placeholder="Entre com o usuário">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="password" class="col-sm-3 control-label">Senha</label>
 						<div class="col-sm-9">
-						  <input type="password" class="form-control" id="password" placeholder="Entre a senha">
+						  <input type="password" class="form-control" name="senha" id="password" placeholder="Entre a senha">
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-3 col-sm-9">
 							<div class="checkbox">
 								<label>
-									<input type="checkbox"> Lembre-se
+									<input type="checkbox" name="lembrar" > Lembre-se
 								</label>
 							</div>
 						</div>

@@ -5,9 +5,11 @@ import yaml
 from sqlite3 import dbapi2 as sqlite3
 from flask import Flask, request, session, g, jsonify, redirect, url_for, abort, \
      render_template, flash
+from flask_login import login_user , logout_user , current_user , login_required
 from time import gmtime, strftime, localtime, strptime
 import paramiko
 from app import app, login_manager
+from .user import User
 
 def connect_db():
     """Conecta a um banco de dados."""
@@ -31,8 +33,11 @@ def init_db():
 def query_db(query, args=(), one=False):
     """Busca um conjunto e dados."""
     cur = get_db().execute(query, args)
-    rv = cur.fetchall()
-    return (rv[0] if rv else None) if one else rv
+    if one:
+        rv = cur.fetchone()
+    else:
+        rv = cur.fetchall()
+    return rv
 
 @app.cli.command('initdb')
 def initdb_command():
@@ -67,13 +72,58 @@ def u(s, encoding='utf8'):
     else:
         raise TypeError("Expected unicode or bytes, got %r" % s)
 
+###################################
+## Login manager
+###################################
+@login_manager.user_loader
+def load_user(id):
+    ruser = query_db('select id, usuario from usuario where id=?',[id], one=True)
+    app.logger.info("Usuario: %s" %(ruser))
+    if ruser is None:
+        return None
+    return User(str(ruser['id']), ruser['usuario'])
+
+@app.route('/login',methods=['GET','POST'])
+def login():
+    if request.method == 'GET':
+        return render_template('login.html')
+
+    app.logger.info('===== Login ======')
+    usuario = request.form['usuario']
+    senha = request.form['senha']
+    isRemember = 'lembrar' in request.form
+    app.logger.info(request.form)
+    app.logger.info('Procurando usuario %s' %(request.form['usuario']))
+    ruser = query_db('select id, usuario from usuario where usuario=? and senha=?',[usuario, senha], one=True)
+    app.logger.info(ruser['id'])
+    if ruser is None:
+        app.logger.info("Não achei usuario ou senha invalida.. retornando resposta")
+
+        flash(u'Falha de autenticação' , 'erro')
+        return redirect(url_for('login'))
+    
+    # Login valido
+    app.logger.info('Usuario autenticado: %s:%s' %(str(ruser['id']), ruser['usuario']))
+    login_user(User(str(ruser['id']), ruser['usuario']), remember = isRemember)
+
+    flash(u'Login efetuado com sucesso', 'sucesso')
+    return redirect(request.args.get('next') or url_for('lista_roteiros'))
+
+@app.route('/logout', methods=['POST', 'GET'])
+@login_required
+def logout():
+    app.logger.info('Logout do usuario %s' %(current_user.username))
+    logout_user()
+    return redirect(url_for('login'))
 
 @app.route('/')
+@login_required
 def lista_roteiros():
     entries = query_db('select a.id as id, b.codigo as origem, c.codigo as equipamento from roteiro_manobra a inner join unidade b on a.id_origem=b.id inner join equipamento c on c.id=a.id_equipamento order by 2,3 desc')
     return render_template('index.html', entries=entries)
 
 @app.route('/roteiro/<int:roteiro_id>')
+@login_required
 def detalha_roteiro(roteiro_id):
     return render_template('item.html', 
         roteiro = query_db('select a.id as id, b.codigo as origem, c.codigo as equipamento, configuracao from roteiro_manobra a inner join unidade b on a.id_origem=b.id inner join equipamento c on c.id=a.id_equipamento where a.id=? order by 2,3 desc',[roteiro_id], one=True),
@@ -82,6 +132,7 @@ def detalha_roteiro(roteiro_id):
         )
 
 @app.route('/execute')
+@login_required
 def executa_roteiro():
     id = request.args.get('id', 0, type=int)
     tempo = localtime()
@@ -121,7 +172,3 @@ def executa_roteiro():
     hora = strftime("%H:%M", tempo)
     return jsonify(hora=hora)
 
-    
-@app.route('/login')
-def login():
-    return render_template('login.html')

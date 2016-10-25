@@ -7,7 +7,8 @@ setup(
     install_requires=[
         'flask',
         'paramiko',
-        'pyyaml'
+        'pyyaml',
+        'Flask-Login'
     ],
     setup_requires=[
         'pytest-runner',
