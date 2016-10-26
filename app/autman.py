@@ -2,6 +2,7 @@
 
 import sys
 import yaml
+import locale
 from sqlite3 import dbapi2 as sqlite3
 from flask import Flask, request, session, g, jsonify, redirect, url_for, abort, \
      render_template, flash
@@ -10,6 +11,8 @@ from time import gmtime, strftime, localtime, strptime
 import paramiko
 from app import app, login_manager
 from .user import User
+
+locale.setlocale(locale.LC_TIME, 'pt_BR')
 
 def connect_db():
     """Conecta a um banco de dados."""

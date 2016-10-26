@@ -87,8 +87,8 @@
               <td><span class="hora"> : </span></td>
               <!-- Action btn btn-sm btn-grey fa-check-square-o-->
               <td>
-                <a class="btn btn-sm btn-green" item-id="{{ item.id }}">
-                  <span class="botao"><i class="fa fa-square-o" aria-hidden="true"></i> Executa</span>
+                <a class="btn btn-sm btn-green" item-id="{{ item.id }}" {% if loop.index !=1 %} style="display:none" {% endif %}>
+                  <span class="botao" ><i class="fa fa-square-o" aria-hidden="true"></i> Executa</span>
                 </a>
               </td>
             </tr>
