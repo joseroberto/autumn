@@ -16,9 +16,19 @@ $('#tbl1').on('click', '.btn', function(e){
             label.parent().removeClass('btn-green');
             label.parent().addClass('btn-grey');
             label.parent().prop('disabled', function(i, v) { return !v; });
-
-            var label2 = prxlinha.find('.btn')
-            label2.show();
+            if(prxlinha.length > 0){
+                var label2 = prxlinha.find('.btn')
+                label2.show();
+            }else{
+                console.log('Entrando na tbl2');
+                var prxtabela = $('#tbl2');
+                console.log(prxtabela);
+                var prxlinha2 = prxtabela.children(1).find('tr:first');
+                console.log(prxlinha2);
+                var label3 = prxlinha2.find('.btn');
+                console.log(label3);
+                label3.show();
+            }
         },
         data: {id:itemid}
     });
