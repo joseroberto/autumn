@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+import os
 import sys
 import yaml
 import locale
@@ -12,7 +12,11 @@ import paramiko
 from app import app, login_manager
 from .user import User
 
-locale.setlocale(locale.LC_TIME, 'pt_BR')
+print os.name
+if os.name != 'nt':
+    locale.setlocale(locale.LC_TIME, 'pt_BR')
+else:
+    locale.setlocale(locale.LC_TIME, 'ptb')
 
 def connect_db():
     """Conecta a um banco de dados."""
