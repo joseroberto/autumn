@@ -85,7 +85,6 @@ def u(s, encoding='utf8'):
 @login_manager.user_loader
 def load_user(id):
     ruser = query_db('select id, usuario from usuario where id=?',[id], one=True)
-    app.logger.info("Usuario: %s" %(ruser))
     if ruser is None:
         return None
     return User(str(ruser['id']), ruser['usuario'])

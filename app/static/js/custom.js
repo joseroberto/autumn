@@ -3,8 +3,11 @@
 $(function(){
 $('#tbl1').on('click', '.btn', function(e){
     var itemid = $(this).attr('item-id');
+    console.log(itemid);
     var linha = $(this).closest('tr');
+    console.log(linha);
     var prxlinha = linha.next('tr');
+    console.log(prxlinha);
     var hora = linha.find('.hora');
     $.ajax({
         url: "/execute",
