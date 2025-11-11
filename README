@@ -1,10 +1,109 @@
-# Passos para instalação
+# AutMan - Automação de Manobras
 
+Sistema Flask para gestão e execução assistida de roteiros de manobras (liberação e normalização) com registro das ações e integração (via SSH) a comandos remotos.
+
+## Requisitos
+- Python 3.10+
+- (Opcional) Tesseract / Ghostscript se futuramente usar OCR ou extração avançada de PDFs
+
+## Instalação
+Clone o repositório e dentro da pasta raiz:
+
+### Ambiente virtual
+Windows PowerShell:
+```
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+```
+Linux/macOS:
+```
+python -m venv .venv
+source .venv/bin/activate
+```
+Instalar dependências:
+```
+pip install --upgrade pip
 pip install --editable .
+```
+Ou use os scripts:
+- Windows: `scripts\init_app.bat` (aceita `--reset-db`)
+- PowerShell: `scripts\init_app.ps1 -ResetDb`
+- Linux/macOS: `./scripts/init_app.sh --reset-db`
 
-export FLASK_APP=./start.py
-
+## Inicialização do Banco
+```
 flask initdb
+flask migrate_passwords   # adiciona hashes se ainda não existirem
+```
+Variável de aplicação:
+```
+export FLASK_APP=./start.py  # Linux/macOS
+$env:FLASK_APP = './start.py'  # PowerShell
+```
 
-    
+## Execução
+```
+flask run
+# ou
+python start.py
+```
+Acesse: http://localhost:5000
+Login de exemplo: `sergiod / 12345678`
+
+## Scripts
+- `scripts/init_app.*` criação de venv, instalação, (re)criação de banco e start automático.
+- `scripts/test_real.py` teste funcional (login + endpoint /execute) com mock de SSH.
+
+## Fluxo na Interface
+1. Login
+2. Selecionar roteiro (somente roteiros com itens aparecem)
+3. Na página do roteiro, clicar em “INICIAR LIBERAÇÃO” para habilitar 1.1 e avançar nos passos.
+4. Após concluir liberação, usar “INICIAR NORMALIZAÇÃO” para habilitar 2.1.
+5. Botões “Executa” disparam rota `/execute?id=<id_item>` (comandos SSH configurados em `app/autman.py` / config).
+
+## Estrutura do Banco (SQLite)
+Tabelas principais:
+- `roteiro_manobra` e `roteiro_manobra_item` (procedimento=1 liberação, 2 normalização)
+- `roteiro_comando` (mapeia itens a equipamentos + ação abrir/fechar)
+- `execucao` / `execucao_item` (planejado para registrar execução; ainda não populado automaticamente)
+
+## Importação de Roteiros via PDF (Plano)
+Etapas futuras para popular novos roteiros a partir de PDFs:
+1. Extrair texto (pdfplumber / camelot para tabelas; OCR com pytesseract se scan).
+2. Normalizar acentos e separar seções “LIBERAÇÃO” e “NORMALIZAÇÃO”.
+3. Detectar itens por regex (ex: `^(\d+)[).\-]\s+`).
+4. Classificar verbos de comando (Fechar=Ação=1, Abrir=Ação=0, Bloquear/Desbloquear conforme regra adicional).
+5. Gerar JSON intermediário `data/parsed/<roteiro>.json` para revisão.
+6. Inserir em SQLite via script `scripts/import_pdfs.py` (a criar).
+7. Relatório de inconsistências (equipamentos não encontrados, linhas não parseadas).
+
+Dependências adicionais sugeridas para esta fase:
+```
+pip install pdfplumber unidecode
+# opcional para tabelas
+pip install camelot-py[cv]
+# opcional OCR
+pip install pdf2image pytesseract
+```
+
+## Próximos Passos
+- Adicionar autoincrement a `roteiro_manobra_item` para evitar colisão manual de IDs.
+- Criar script de importação de PDFs.
+- Registrar hora e usuário em cada execução (persistência em `execucao_item`).
+- Adicionar exibição de mensagens flash e auditoria completa de comandos enviados.
+
+## Testes
+Executar teste funcional:
+```
+python scripts/test_real.py
+```
+(Se necessário ajuste de credenciais/host para mock SSH.)
+
+## Contribuição
+1. Abrir issue descrevendo novo roteiro ou ajuste.
+2. Anexar PDF fonte (sem dados sensíveis) em `data/pdfs/`.
+3. Executar parser e revisar JSON antes de commit.
+
+## Licença
+Uso interno. Ajustar seção conforme política da organização.
 

@@ -29,7 +29,7 @@
 			<div class="col-md-6">
 				<label for="periodo" class="field-label">Periodo </label>
 				<label for="periodo" class="field">
-					<input type="text" name="origem" id="periodo" class="gui-input" placeholder="Periodo"">
+					<input type="text" name="origem" id="periodo" class="gui-input" placeholder="Periodo">
 				</label>
 			</div>
 			<div class="col-md-6">
@@ -43,7 +43,7 @@
 			<div class="col-md-12">
 				<label for="responsaveis" class="field-label">Responsáveis</label>
 				<label for="responsaveis" class="field">
-					<input type="text" name="origem" id="responsaveis" class="gui-input" placeholder="Responsáveis"">
+					<input type="text" name="origem" id="responsaveis" class="gui-input" placeholder="Responsáveis">
 				</label>
 			</div>
 		</div>
@@ -58,18 +58,24 @@
 					<span class="input-hint"> 
 						<strong>Hint:</strong> Configuração inicial do equipamento 
 					</span> 
-				</label>											
+				</label>									
 			</div>
 		</div>
 	</form>
 
   <div class="col-md-12">
     <div class="item">
+      <!-- Botão iniciar liberação -->
+      <div class="row">
+        <div class="col-md-12">
+          <button id="btnStartLiberacao" class="btn btn-primary btn-sm">INICIAR LIBERAÇÃO</button>
+        </div>
+      </div>
+      <br />
       <!-- Table -->
       <div class="table-responsive">
         <table id="tbl1" class="table">
           <thead>
-            <!-- Table head -->
             <tr>
               <th><h5>1</h5></th>
               <th>&nbsp;</th>
@@ -85,9 +91,8 @@
               <td>{{ item.unidade }}</td>
               <td>{{ item.descricao }}</td>
               <td><span class="hora"> : </span></td>
-              <!-- Action btn btn-sm btn-grey fa-check-square-o-->
               <td>
-                <a class="btn btn-sm btn-green" item-id="{{ item.id }}" {% if loop.index !=1 %} style="display:none" {% endif %}>
+                <a class="btn btn-sm btn-green" item-id="{{ item.id }}" {% if loop.index == 1 %}style="display:none"{% else %}style="display:none"{% endif %}>
                   <span class="botao" ><i class="fa fa-square-o" aria-hidden="true"></i> Executa</span>
                 </a>
               </td>
@@ -100,10 +105,15 @@
 				<br />
 				<hr />
 				<br />
-        <!-- /Table -->
+        <!-- Botão iniciar normalização -->
+        <div class="row">
+          <div class="col-md-12">
+            <button id="btnStartNormalizacao" class="btn btn-primary btn-sm">INICIAR NORMALIZAÇÃO</button>
+          </div>
+        </div>
+        <br />
         <table id="tbl2" class="table">
           <thead>
-            <!-- Table head -->
             <tr>
               <th><h5>2</h5></th>
               <th>&nbsp;</th>
@@ -118,10 +128,9 @@
               <td>2.{{loop.index}}</td>
               <td>{{ item.unidade }}</td>
               <td>{{ item.descricao }}</td>
-              <td><span class="hora"> : </span></</td>
-              <!-- Action -->
+              <td><span class="hora"> : </span></td>
               <td>
-                  <a class="btn btn-sm btn-green" item-id="{{ item.id }}" style="display:none">
+                  <a class="btn btn-sm btn-green" item-id="{{ item.id }}" {% if loop.index == 1 %}style="display:none"{% else %}style="display:none"{% endif %}>
                     <span class="botao"><i class="fa fa-square-o" aria-hidden="true"></i> Executa</span>
                   </a>
               </td>
@@ -131,9 +140,30 @@
             {% endfor %}
           </tbody>
         </table>
-        <!-- /Table -->
       </div>
     </div>
   </div>
 
+<script>
+// Habilita o primeiro botão de cada etapa somente após clicar em INICIAR
+document.addEventListener('DOMContentLoaded', function() {
+  var btnStartLib = document.getElementById('btnStartLiberacao');
+  var firstLib = document.querySelector('#tbl1 tbody a[item-id]');
+  var btnStartNorm = document.getElementById('btnStartNormalizacao');
+  var firstNorm = document.querySelector('#tbl2 tbody a[item-id]');
+
+  if (btnStartLib && firstLib) {
+    btnStartLib.addEventListener('click', function() {
+      firstLib.style.display = 'inline-block';
+      btnStartLib.disabled = true;
+    });
+  }
+  if (btnStartNorm && firstNorm) {
+    btnStartNorm.addEventListener('click', function() {
+      firstNorm.style.display = 'inline-block';
+      btnStartNorm.disabled = true;
+    });
+  }
+});
+</script>
 {% endblock %}
